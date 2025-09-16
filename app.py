@@ -8,7 +8,7 @@ nltk.download("wordnet")
 nltk.download("omw-1.4")
 
 app = Flask(__name__)
-CORS(app)  # <-- allow JS to call backend
+CORS(app, resources={r"/humanize": {origins: "*"}})  # <-- allow JS to call backend
 
 def get_synonym(word):
     synonyms = []
@@ -49,3 +49,4 @@ def humanize_api():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
